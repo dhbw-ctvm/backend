@@ -1,4 +1,5 @@
 const http = require('http');
+const fs = require('fs')
 
 //The url we want is: 'https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson'
 var options = {
@@ -17,7 +18,16 @@ var options = {
     //the whole response has been received, so we just print it out here
     response.on('end', function () {
       console.log(str);
+
+      fs.writeFile('Data/test.txt' , str, err => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        //file written successfully
+      });
     });
   }
   
-  http.request('http://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson', callback).end();
+  var responseGet = '';
+  http.get('http://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson', callback);
