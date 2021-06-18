@@ -1,11 +1,11 @@
-const http = require('http');
+const https = require('https');
 const fs = require('fs')
 
-//url 'http://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson'
-// https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json
+//url all'http://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json
+//url selected: 'https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=BEZ,KFL,death_rate,cases,deaths,cases_per_100k,cases_per_population,BL,BL_ID,county,OBJECTID,GEN,RS,EWZ,last_update,cases7_per_100k,recovered,cases7_bl&outSR=4326&f=json'
 var options = {
     host: 'services7.arcgis.com',
-    path: '/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json'
+    path: '/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=BEZ,KFL,death_rate,cases,deaths,cases_per_100k,cases_per_population,BL,BL_ID,county,OBJECTID,GEN,RS,EWZ,last_update,cases7_per_100k,recovered,cases7_bl&returnGeometry=false&outSR=4326&f=json'
   };
   
   callback = function(response) {
@@ -30,4 +30,4 @@ var options = {
     });
   }
   
-  http.get(options, callback);
+  https.get(options, callback);
