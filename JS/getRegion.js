@@ -1,23 +1,7 @@
 const fs = require('fs');
 
 //var filePath = 'Data/kiel.json'
-function loadFile(filePath){
-    var arrLines = [];
-    fs.fstatSync (filePath, function(err, stat) {
-        if(err == null) {
-            arrLines = fsReadFileSynchToArray(filePath);
-        } else if(err.code == 'ENOENT') {
-            console.log('error: loading file ' + filePath + ' not found');
-        } else {
-            console.log('error: loading file', err.code);
-        }
-    });
-    return arrLines;
-}
-
 //Beispiel Kiel: Punkt in Stadt (54.323640, 10.131973)
-
-
 
 function inside(point, vs) {
     // ray-casting algorithm based on
@@ -45,5 +29,13 @@ function inside(point, vs) {
 var pointK = [10.131973, 54.323640];
 
 
-inside(pointK, kiel);
+let rawdata = fs.readFileSync('Data/test.json');
+let data = JSON.parse(rawdata);
+console.log(data);
+
+function searchRegion(point, array){
+    array[array.length-2]
+}
+
+inside(pointK, data);
 
