@@ -23,8 +23,9 @@ function inside(point, vs) {
 function searchRegion(point, dataJson) {
     for (var i = 0; i < dataJson.features.length; i++) {
         if (inside(point, dataJson.features[i].geometry.rings[0])) {
-            console.log(dataJson.features[i]);
-            return dataJson.features[i];
+            //console.log(dataJson.features[i]);
+            var data = dataJson.features[i].attributes;
+            return data;
         }
     }
 }
@@ -34,6 +35,6 @@ let data = JSON.parse(rawdata);
 
 module.exports = {
     main: function (location) {
-        searchRegion(location, data);
+        return searchRegion(location, data);
     }
 }
