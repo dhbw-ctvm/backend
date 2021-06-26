@@ -6,9 +6,6 @@ const fs = require('fs');
 function inside(point, vs) {
     // ray-casting algorithm based on
     // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html/pnpoly.html
-
-    //console.log(vs);
-
     var x = point[0];
     var y = point[1];
     
@@ -22,20 +19,29 @@ function inside(point, vs) {
         if (intersect) inside = !inside;
     }
     
-    console.log(inside);
     return inside;
 };
 
-var pointK = [10.131973, 54.323640];
+function searchRegion(point, dataJson){
+    
+   
 
+    for (var i = 0; i < dataJson.features.length; i++){
+
+                if (inside(point, dataJson.features[i].geometry.rings[0])){
+                    console.log(dataJson.features[i]);
+                    return;
+            }
+        
+    }
+}
+
+var pointKi = [10.131973, 54.323640]; //Pojnt in Kiel
+var pointKa = [8.407017, 49.014498]; //Point in Karlsruhe 
 
 let rawdata = fs.readFileSync('Data/test.json');
 let data = JSON.parse(rawdata);
-console.log(data);
 
-function searchRegion(point, array){
-    array[array.length-2]
-}
+searchRegion(pointKa,data);
 
-inside(pointK, data);
 
