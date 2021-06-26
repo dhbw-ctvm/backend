@@ -19,6 +19,7 @@ function inside(point, vs) {
     return inside;
 };
 
+//gets the gemoetry of all Regions in Germany and passes them to the function inside, which checks if the given Location is in the Region
 function searchRegion(point, dataJson) {
     for (var i = 0; i < dataJson.features.length; i++) {
         if (inside(point, dataJson.features[i].geometry.rings[0])) {
