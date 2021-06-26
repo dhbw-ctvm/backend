@@ -1,8 +1,5 @@
 const fs = require('fs');
 
-//var filePath = 'Data/kiel.json'
-//Beispiel Kiel: Punkt in Stadt (54.323640, 10.131973)
-
 function inside(point, vs) {
     // ray-casting algorithm based on
     // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html/pnpoly.html
@@ -22,26 +19,23 @@ function inside(point, vs) {
     return inside;
 };
 
-function searchRegion(point, dataJson){
-    
-   
-
+function searchRegion(point, dataJson){    
     for (var i = 0; i < dataJson.features.length; i++){
-
                 if (inside(point, dataJson.features[i].geometry.rings[0])){
                     console.log(dataJson.features[i]);
-                    return;
+                    return dataJson.features[i];
             }
-        
     }
 }
 
 var pointKi = [10.131973, 54.323640]; //Pojnt in Kiel
 var pointKa = [8.407017, 49.014498]; //Point in Karlsruhe 
 
-let rawdata = fs.readFileSync('Data/test.json');
+let rawdata = fs.readFileSync('Data/incidenceData.json');
 let data = JSON.parse(rawdata);
 
-searchRegion(pointKa,data);
-
-
+module.exports = {
+    main : function(){
+        searchRegion(pointKa,data);
+    }
+}
