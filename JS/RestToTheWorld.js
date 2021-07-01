@@ -36,6 +36,7 @@ app.get('/incidence', jsonParser, function (req, res) {
     // JSON zu XML konvertieren
     data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4})
 
+    // XML-Header einfügen
     data = xmlHeader('.xsl', 'xml', '.dtd') + data;
 
     res.end(data)
