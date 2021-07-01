@@ -6,10 +6,10 @@ var xmljs = require("xml-js");
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
-function xmlHeader(dtdHref, rootTag) {
+function xmlHeader(xslHref, rootTag, dtdUrl) {
     return  '<?xml version="1.0" encoding="UTF-8"?>\n' +
-            '<?xml-stylesheet type="text/xsl" href="' + dtdHref + '"?>\n' +
-            '<!DOCTYPE ' + rootTag + '>\n';
+            '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
+            '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
 }
 
 app.get('/incidence', jsonParser, function (req, res) {
@@ -36,8 +36,7 @@ app.get('/incidence', jsonParser, function (req, res) {
     // JSON zu XML konvertieren
     data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4})
 
-    // TODO: Link zur DTD einfügen
-    data = xmlHeader('', 'xml') + data;
+    data = xmlHeader('.xsl', 'xml', '.dtd') + data;
 
     res.end(data)
 });
