@@ -1,5 +1,9 @@
 # Backend
 
-npm install express --save
+## Dependencies
 
-npm install --save xml-js
+```
+npm install express --save
+npm install xml-js --save
+npm install body-parser --save
+```
