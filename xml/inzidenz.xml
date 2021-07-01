@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href=".xsl"?>
+<!DOCTYPE xml SYSTEM "inzidenz.dtd">
 <xml>
-    <ort>Karlsruhe</ort>
-    <inzidenz>3.141</inzidenz>
+  <kreis>Stadtkreis Karlsruhe</kreis>
+  <bundesland>Baden-Württemberg</bundesland>
+  <inzidenz>1.60225597641479</inzidenz>
 </xml>

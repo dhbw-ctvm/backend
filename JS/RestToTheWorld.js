@@ -6,17 +6,25 @@ var xmljs = require("xml-js");
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
+function xmlHeader(xslHref, rootTag, dtdUrl) {
+    return  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+            '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
+            '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
+}
+
 app.get('/incidence', jsonParser, function (req, res) {
     if (req.headers['content-type'] != 'application/json') {
         res.status(415).send({ error: 'content-type must be application/json' })
         return
     }
 
+    // Daten zu gegebenen Koordinaten abfragen
     var data = main.startStack([
         parseFloat(req.body.long),
         parseFloat(req.body.lat)
     ])
 
+    // Nicht benötigte Daten rausfiltern
     data = {
         xml: {
             kreis: data['BEZ'] + ' ' + data['GEN'],     // Stadtkreis Karlsruhe
@@ -26,10 +34,11 @@ app.get('/incidence', jsonParser, function (req, res) {
         }
     }
 
-    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
+    // JSON zu XML konvertieren
+    data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4})
 
-    // TODO: <?xml version="" ... ?>
-    // TODO: URL zu XSLT
+    // XML-Header einfügen
+    data = xmlHeader('.xsl', 'xml', '.dtd') + data;
 
     res.end(data)
 });

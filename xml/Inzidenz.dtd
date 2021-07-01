@@ -1,1 +1,5 @@
-<!ELEMENT element-name (#PCDATA)>
+<!ELEMENT xml (kreis, bundesland, inzidenz)>
+
+<!ELEMENT kreis (#PCDATA)>
+<!ELEMENT bundesland (#PCDATA)>
+<!ELEMENT inzidenz (#PCDATA)>
