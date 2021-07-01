@@ -3,23 +3,39 @@
 <!DOCTYPE testzentren SYSTEM "testzentren.dtd">
 <testzentren>
     <testzentrum>
-        <name></name>
-        <addresse></addresse>
+        <name>Noahs Testzentrum</name>
+        <addresse>Sophienstraße 115</addresse>
         <koordinaten>
-            <laenge></laenge>
-            <breite></breite>
+            <laenge>8.380360419066958</laenge>
+            <breite>49.007683124814314</breite>
         </koordinaten>
-        <oeffnungszeiten></oeffnungszeiten>
-        <terminbuchung></terminbuchung>
+        <oeffnungszeiten>
+            <zeit tag="Montag">Geschlossen</zeit>
+            <zeit tag="Dienstag">Geschlossen</zeit>
+            <zeit tag="Mittwoch">Geschlossen</zeit>
+            <zeit tag="Donnerstag">Geschlossen</zeit>
+            <zeit tag="Freitag">Geschlossen</zeit>
+            <zeit tag="Samstag">Geschlossen</zeit>
+            <zeit tag="Sonntag">Geschlossen</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://www.youtube.com/watch?v=dQw4w9WgXcQ</terminbuchung>
     </testzentrum>
     <testzentrum>
-        <name></name>
-        <addresse></addresse>
-        <koordinaten>
-            <laenge></laenge>
-            <breite></breite>
+        <name>Mikes Testzentrum</name>
+        <addresse>Hirschstraße 37</addresse>
+        <koordinaten> 
+            <laenge>8.391501501950723</laenge>
+            <breite>49.00624341072384</breite>
         </koordinaten>
-        <oeffnungszeiten></oeffnungszeiten>
-        <terminbuchung></terminbuchung>
+        <oeffnungszeiten>
+            <zeit tag="Montag">0-23 Uhr</zeit>
+            <zeit tag="Dienstag">0-23 Uhr</zeit>
+            <zeit tag="Mittwoch">0-23 Uhr</zeit>
+            <zeit tag="Donnerstag">0-23 Uhr</zeit>
+            <zeit tag="Freitag">0-23 Uhr</zeit>
+            <zeit tag="Samstag">Geschlossen</zeit>
+            <zeit tag="Sonntag">Geschlossen</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://new.siemens.com/de/de.html</terminbuchung>
     </testzentrum>
 </testzentren>
