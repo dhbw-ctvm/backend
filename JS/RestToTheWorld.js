@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var main = require('./main.js');
 var xmljs = require("xml-js");
+var fs = require('fs');
 
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
@@ -45,6 +46,9 @@ app.get('/incidence', jsonParser, function (req, res) {
 
 app.get('/centers/test', function (req, res) {
     // TODO: Array aller Testzentren zurückgeben
+
+    let rawdata = fs.readFileSync('../xml/testzentren.xml');
+    res.end(rawdata);
 });
 
 app.get('/centers/vaccination', function (req, res) {
