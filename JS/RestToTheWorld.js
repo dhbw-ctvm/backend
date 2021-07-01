@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
 app.get('/incidence', jsonParser, function (req, res) {
-    if(req.headers['content-type'] != 'application/json') {
-        res.status(415).send({error: 'content-type must be application/json'})
+    if (req.headers['content-type'] != 'application/json') {
+        res.status(415).send({ error: 'content-type must be application/json' })
         return
     }
 
@@ -21,11 +21,12 @@ app.get('/incidence', jsonParser, function (req, res) {
         xml: {
             kreis: data['BEZ'] + ' ' + data['GEN'],     // Stadtkreis Karlsruhe
             bundesland: data['BL'],                     // Baden-Württemberg
-            inzidenz: data['cases7_per_100k']           // 1.60225597...
+            inzidenz: data['cases7_per_100k'],          // 1.60225597...
+            last_update: data['last_update']
         }
     }
 
-    data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4})
+    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
 
     // TODO: <?xml version="" ... ?>
     // TODO: URL zu XSLT
@@ -33,11 +34,11 @@ app.get('/incidence', jsonParser, function (req, res) {
     res.end(data)
 });
 
-app.get('/centers/test', function(req, res) {
+app.get('/centers/test', function (req, res) {
     // TODO: Array aller Testzentren zurückgeben
 });
 
-app.get('/centers/vaccination', function(req, res) {
+app.get('/centers/vaccination', function (req, res) {
     // TODO: Array aller Impfzentren zurückgeben
 });
 

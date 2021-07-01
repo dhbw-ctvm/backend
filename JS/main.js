@@ -17,7 +17,7 @@ var pointNoIdea = [10.689161607437237, 51.30893277278768] //just clicked on the 
 
 module.exports = {
   startStack: function (location) {
-    //if the Incidence data is older than 6 hours, it gets fetched new
+    //if the Incidence data is older than 6 hours, it gets fetched new 
     if (incidence.ageOfData() > 21600) {
       console.log('fetching new Incidentce Data')
       incidence.fetchData();

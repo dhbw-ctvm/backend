@@ -38,7 +38,7 @@ module.exports = {
     fs.stat('Data/incidenceData.json', function (err, stats) {
       let seconds = (new Date().getTime() - stats.mtime) / 1000;
       console.log(`incidenceData is ${seconds} sec old`);
-      return seconds;
+      return parseFloat(seconds);
     });
   }
 }
