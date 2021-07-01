@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
+app.use(cors());
+
 var main = require('./main.js');
 var xmljs = require("xml-js");
 var fs = require('fs');
-
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
 
 function xmlHeader(xslHref, rootTag, dtdUrl) {
     return  '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -13,16 +13,11 @@ function xmlHeader(xslHref, rootTag, dtdUrl) {
             '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
 }
 
-app.get('/incidence', jsonParser, function (req, res) {
-    if (req.headers['content-type'] != 'application/json') {
-        res.status(415).send({ error: 'content-type must be application/json' })
-        return
-    }
-
+app.get('/incidence', function (req, res) {
     // Daten zu gegebenen Koordinaten abfragen
     var data = main.startStack([
-        parseFloat(req.body.long),
-        parseFloat(req.body.lat)
+        parseFloat(req.query.long),
+        parseFloat(req.query.lat)
     ])
 
     // Nicht benötigte Daten rausfiltern
