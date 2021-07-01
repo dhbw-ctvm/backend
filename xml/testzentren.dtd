@@ -1,0 +1,5 @@
+<!ELEMENT testzentren (testzentrum*)>
+<!ELEMENT testzentrum (name, addresse)>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT addresse (#PCDATA)>

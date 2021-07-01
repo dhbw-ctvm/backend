@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href=".xsl"?>
+<!DOCTYPE testzentren SYSTEM "testzentren.dtd">
+<testzentren>
+    <testzentrum>
+        <name></name>
+        <addresse></addresse>
+    </testzentrum>
+    <testzentrum>
+        <name></name>
+        <addresse></addresse>
+    </testzentrum>
+</testzentren>
