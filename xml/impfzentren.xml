@@ -5,6 +5,10 @@
     <impfzentrum>
         <name>Braun'sches Impfzetrum zu Karlsruhe</name>
         <addresse></addresse>
+        <koordinaten>
+            <laenge></laenge>
+            <breite></breite>
+        </koordinaten>
         <oeffnungszeiten>
             <zeit tag="montag">08:00-18:00</zeit>
             <zeit tag="dienstag">08:00-18:00</zeit>
