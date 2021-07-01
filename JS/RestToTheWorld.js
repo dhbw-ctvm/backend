@@ -2,9 +2,9 @@ var express = require('express');
 var app = express();
 var fs = require("fs");
 var main = require('./main.js');
+var xmljs = require("xml-js");
 
 app.get('/getLocation/:location', function (req, res) {
-    // First read existing users.  req.params.location
     console.log(req.params.location);
     var paraString = req.params.location;
     var point = paraString.split('S');
@@ -13,7 +13,8 @@ app.get('/getLocation/:location', function (req, res) {
     point[0] = parseFloat(point[0]);
     point[1] = parseFloat(point[1]);
     var data = main.startStack(point);
-    res.end(JSON.stringify(data));
+    data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4});
+    res.end((data));
 
 })
 
@@ -23,6 +24,7 @@ app.get('/getLocationDebug', function (req, res) {
 
 })
 
+//http://127.0.0.1:8081/getLocation/8P407017S49P014498
 var server = app.listen(8081, function () {
     var host = server.address().address
     var port = server.address().port
