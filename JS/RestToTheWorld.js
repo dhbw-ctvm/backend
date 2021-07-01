@@ -17,12 +17,18 @@ app.get('/incidence', jsonParser, function (req, res) {
         parseFloat(req.body.lat)
     ])
 
-    // Damit das Rückgabe-XML einen Root-Tag hat
-    data = { xml: data }
-
-    // TODO: Filter, damit nur relevante Daten zurückgegeben werden
+    data = {
+        xml: {
+            kreis: data['BEZ'] + ' ' + data['GEN'],     // Stadtkreis Karlsruhe
+            bundesland: data['BL'],                     // Baden-Württemberg
+            inzidenz: data['cases7_per_100k']           // 1.60225597...
+        }
+    }
 
     data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4})
+
+    // TODO: <?xml version="" ... ?>
+    // TODO: URL zu XSLT
 
     res.end(data)
 });
