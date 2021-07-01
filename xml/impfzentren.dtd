@@ -1,8 +1,12 @@
 <!ELEMENT impfzentren (impfzentrum*)>
-<!ELEMENT impfzentrum (name, addresse, oeffnungszeiten, terminbuchung)>
+<!ELEMENT impfzentrum (name, addresse, koordinaten, oeffnungszeiten, terminbuchung)>
 
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT addresse (#PCDATA)>
+
+<!ELEMENT koordinaten (laenge, breite)>
+<!ELEMENT laenge (#PCDATA)>
+<!ELEMENT breite (#PCDATA)>
 
 <!ELEMENT oeffnungszeiten (zeit*)>
 <!ELEMENT zeit (#PCDATA)>

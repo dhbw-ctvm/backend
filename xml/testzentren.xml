@@ -5,12 +5,20 @@
     <testzentrum>
         <name></name>
         <addresse></addresse>
+        <koordinaten>
+            <laenge></laenge>
+            <breite></breite>
+        </koordinaten>
         <oeffnungszeiten></oeffnungszeiten>
         <terminbuchung></terminbuchung>
     </testzentrum>
     <testzentrum>
         <name></name>
         <addresse></addresse>
+        <koordinaten>
+            <laenge></laenge>
+            <breite></breite>
+        </koordinaten>
         <oeffnungszeiten></oeffnungszeiten>
         <terminbuchung></terminbuchung>
     </testzentrum>
