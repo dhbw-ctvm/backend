@@ -1,5 +1,12 @@
 <!ELEMENT testzentren (testzentrum*)>
-<!ELEMENT testzentrum (name, addresse)>
+<!ELEMENT testzentrum (name, addresse, oeffnungszeiten, terminbuchung)>
 
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT addresse (#PCDATA)>
+
+<!ELEMENT oeffnungszeiten (zeit*)>
+<!ELEMENT zeit (#PCDATA)>
+<!ATTLIST zeit
+    tag CDATA #REQUIRED>
+
+<!ELEMENT terminbuchung (#PCDATA)>

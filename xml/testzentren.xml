@@ -5,9 +5,13 @@
     <testzentrum>
         <name></name>
         <addresse></addresse>
+        <oeffnungszeiten></oeffnungszeiten>
+        <terminbuchung></terminbuchung>
     </testzentrum>
     <testzentrum>
         <name></name>
         <addresse></addresse>
+        <oeffnungszeiten></oeffnungszeiten>
+        <terminbuchung></terminbuchung>
     </testzentrum>
 </testzentren>
