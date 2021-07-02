@@ -13,6 +13,19 @@ function xmlHeader(xslHref, rootTag, dtdUrl) {
             '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
 }
 
+app.get('/xml/*.*', function(req, res) {
+    let fp = '..' + req.originalUrl;
+
+    fs.readFile(fp, 'utf8', function(err, data) {
+        if(err) {
+            res.sendStatus(404);
+            return;
+        }
+        
+        res.send(data);
+    });
+});
+
 app.get('/incidence', function (req, res) {
     // Daten zu gegebenen Koordinaten abfragen
     var data = main.startStack([
