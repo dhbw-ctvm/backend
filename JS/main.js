@@ -1,5 +1,7 @@
 var incidence = require('./fetchNewIncidenceData.js');
 var getRegion = require('./getRegion.js');
+var testCeDuessel = require('./testcenterD.js'); 
+var testCeFormater = require('./testcenterDataFormater.js');
 
 //if the Incidence data is older than 6 hours, it gets fetched new
 if (incidence.ageOfData() > 21600) {
@@ -22,7 +24,16 @@ module.exports = {
       console.log('fetching new Incidentce Data')
       incidence.fetchData();
     }
+
     var point = location
     return getRegion.main(point);
+  },
+
+  startTestCenterStack: function () {
+    if (testCeDuessel.ageOfData() > 21600) {
+      console.log('fetching new Testcenter Data')
+      testCeDuessel.fetchData();
+    }
+    return testCeFormater.testcenterData();
   }
 }

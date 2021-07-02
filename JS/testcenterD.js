@@ -2,8 +2,8 @@ const https = require('https');
 const fs = require('fs');
 
 var options = {
-  host: 'services7.arcgis.com',
-  path: '/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=BEZ,KFL,death_rate,cases,deaths,cases_per_100k,cases_per_population,BL,BL_ID,county,OBJECTID,GEN,RS,EWZ,last_update,cases7_per_100k,recovered,cases7_bl&returnGeometry=true&outSR=4326&f=json'
+  host: 'opendata.duesseldorf.de',
+  path: '/api/action/datastore/search.json?resource_id=d0ad2b6f-8fc1-4447-9e21-cb8b8e00ab65&limit=300'
 };
 
 callback = function (response) {
@@ -18,7 +18,7 @@ callback = function (response) {
   response.on('end', function () {
 
     //write output
-    fs.writeFile('Data/incidenceData.json', str, err => {
+    fs.writeFile('Data/testcenterDuesseldorf.json', str, err => {
       if (err) {
         console.error(err)
         return
@@ -34,9 +34,9 @@ module.exports = {
   },
 
   ageOfData: function () {
-    fs.stat('Data/incidenceData.json', function (err, stats) {
+    fs.stat('Data/testcenterDuesseldorf.json', function (err, stats) {
       let seconds = (new Date().getTime() - stats.mtime) / 1000;
-      console.log(`incidenceData is ${seconds} sec old`);
+      console.log(`TestcenterData is ${seconds} sec old`);
       return parseFloat(seconds);
     });
   }
