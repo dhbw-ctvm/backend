@@ -22,6 +22,8 @@ app.get('/xml/*.*', function(req, res) {
             return;
         }
         
+        if(fp.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
+        if(fp.endsWith('.xsl')) res.setHeader('Content-Type', 'text/xsl');
         res.send(data);
     });
 });
@@ -47,8 +49,9 @@ app.get('/incidence', function (req, res) {
     data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4})
 
     // XML-Header einfügen
-    data = xmlHeader('.xsl', 'xml', '.dtd') + data;
+    data = xmlHeader('/xml/inzidenz.xsl', 'xml', '/xml/inzidenz.dtd') + data;
 
+    res.setHeader('Content-Type', 'application/xml')
     res.end(data)
 });
 
