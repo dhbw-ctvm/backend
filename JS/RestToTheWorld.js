@@ -8,22 +8,22 @@ var xmljs = require("xml-js");
 var fs = require('fs');
 
 function xmlHeader(xslHref, rootTag, dtdUrl) {
-    return  '<?xml version="1.0" encoding="UTF-8"?>\n' +
-            '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
-            '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
+        '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
 }
 
-app.get('/xml/*.*', function(req, res) {
+app.get('/xml/*.*', function (req, res) {
     let fp = '..' + req.originalUrl;
 
-    fs.readFile(fp, 'utf8', function(err, data) {
-        if(err) {
+    fs.readFile(fp, 'utf8', function (err, data) {
+        if (err) {
             res.sendStatus(404);
             return;
         }
-        
-        if(fp.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
-        if(fp.endsWith('.xsl')) res.setHeader('Content-Type', 'text/xsl');
+
+        if (fp.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
+        if (fp.endsWith('.xsl')) res.setHeader('Content-Type', 'text/xsl');
         res.send(data);
     });
 });
@@ -46,8 +46,7 @@ app.get('/incidence', function (req, res) {
     }
 
     // JSON zu XML konvertieren
-    data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4})
-
+    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
     // XML-Header einfügen
     data = xmlHeader('/xml/inzidenz.xsl', 'xml', '/xml/inzidenz.dtd') + data;
 
@@ -57,11 +56,14 @@ app.get('/incidence', function (req, res) {
 
 app.get('/centers/test', function (req, res) {
     // TODO: Array aller Testzentren zurückgeben
-    var data = main.startTestCenterStack();
-    data = xmljs.json2xml(JSON.stringify(data), {compact: true, spaces: 4});
+    var data =JSON.parse( main.startTestCenterStack())
 
+ 
+    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
+    data = xmlHeader('/xml/testzentren.xsl', 'xml', 'xml/testzentren.dtd') + data
+    console.log(data);
     let rawdata = fs.readFileSync('../xml/testzentren.xml');
-    res.end(rawdata +data);
+    res.end(data);
 });
 
 app.get('/centers/vaccination', function (req, res) {

@@ -16,7 +16,6 @@ callback = function (response) {
 
   //the whole response has been received, so we just print it out here
   response.on('end', function () {
-
     //write output
     fs.writeFile('Data/testcenterDuesseldorf.json', str, err => {
       if (err) {
