@@ -56,15 +56,14 @@ app.get('/incidence', function (req, res) {
 
 app.get('/centers/test', function (req, res) {
     // TODO: Array aller Testzentren zurückgeben
-    var data = main.startTestCenterStack()
-    //let data = JSON.parse(rawdataB);
-    console.log(data);
+    var data =JSON.parse( main.startTestCenterStack())
 
+ 
     data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
     data = xmlHeader('/xml/testzentren.xsl', 'xml', 'xml/testzentren.dtd') + data
-    //console.log(data);
+    console.log(data);
     let rawdata = fs.readFileSync('../xml/testzentren.xml');
-    res.end(rawdata);
+    res.end(data);
 });
 
 app.get('/centers/vaccination', function (req, res) {
