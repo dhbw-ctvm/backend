@@ -23,13 +23,6 @@ function getData() {
 
     }
     resultf = resultf + ']}}'
-    fs.writeFile('./test.json', resultf, err => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        //file written successfully
-    });
     return resultf;
 }
 
