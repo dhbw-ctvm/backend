@@ -7,7 +7,7 @@
                     <p>
                         <xsl:value-of select="kreis" />
                         <br/><br/>
-                        Inzidenz: <xsl:value-of select="inzidenz" />
+                        Inzidenz: <xsl:value-of select="format-number(inzidenz,'#.###')"/>
                     </p>
                 </xsl:for-each>
             </body>
