@@ -2,18 +2,17 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 app.use(cors());
+var xmljs = require("xml-js");
+var fs = require('fs');
 
 var incidence = require('./fetchNewIncidenceData.js');
 var getRegion = require('./getRegion.js');
 var testCeDuessel = require('./testcenterD.js');
 var testCeFormater = require('./testcenterDataFormater.js');
 
-var xmljs = require("xml-js");
-var fs = require('fs');
-
 //startsequenz
-incidence.onStart();
-testCeDuessel.onStart();
+//incidence.onStart();
+//testCeDuessel.onStart();
 
 function xmlHeader(xslHref, rootTag, dtdUrl) {
     return '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -72,7 +71,7 @@ app.get('/centers/test', function (req, res) {
     var data = JSON.parse(testCeFormater.testcenterData());
 
     data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
-    data = xmlHeader('/xml/testzentren.xsl', 'xml', 'xml/testzentren.dtd') + data
+    data = xmlHeader('/xml/testzentren.xsl', 'xml', '/xml/testzentren.dtd') + data
     let rawdata = fs.readFileSync('../xml/testzentren.xml');
     res.end(data);
 });

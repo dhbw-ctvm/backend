@@ -27,6 +27,7 @@ callback = function (response) {
     });
   });
 }
+https.get(options, callback);
 
 module.exports = {
   fetchData: function () {
