@@ -10,10 +10,6 @@ var getRegion = require('./getRegion.js');
 var testCeDuessel = require('./testcenterD.js');
 var testCeFormater = require('./testcenterDataFormater.js');
 
-//startsequenz
-//incidence.onStart();
-//testCeDuessel.onStart();
-
 function xmlHeader(xslHref, rootTag, dtdUrl) {
     return '<?xml version="1.0" encoding="UTF-8"?>\n' +
         '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
@@ -71,7 +67,7 @@ app.get('/centers/test', function (req, res) {
     var data = JSON.parse(testCeFormater.testcenterData());
 
     data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
-    data = xmlHeader('/xml/testzentren.xsl', 'xml', '/xml/testzentren.dtd') + data
+    data = xmlHeader('/xml/testzentren.xsl', 'xml', 'xml/testzentren.dtd') + data
     let rawdata = fs.readFileSync('../xml/testzentren.xml');
     res.end(data);
 });
