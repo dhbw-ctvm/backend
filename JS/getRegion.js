@@ -20,7 +20,11 @@ function inside(point, vs) {
 };
 
 //gets the gemoetry of all Regions in Germany and passes them to the function inside, which checks if the given Location is in the Region
-function searchRegion(point, dataJson) {
+function searchRegion(point) {
+
+    let rawdata = fs.readFileSync('./Data/incidenceData.json');
+    let dataJson = JSON.parse(rawdata);
+
     for (var i = 0; i < dataJson.features.length; i++) {
         if (inside(point, dataJson.features[i].geometry.rings[0])) {
             //console.log(dataJson.features[i]);
@@ -30,11 +34,14 @@ function searchRegion(point, dataJson) {
     }
 }
 
-let rawdata = fs.readFileSync('Data/incidenceData.json');
-let data = JSON.parse(rawdata);
+//Debug locations. The Coordinats for Locations have to be in the formate: [Longitude, Latitude]!
+var pointKi = [10.131973, 54.323640]; //Point in Kiel
+var pointKa = [8.407017, 49.014498]; //Point in Karlsruhe  ../8P407017S49P014498
+var pointGl = [7.1105689944801505, 51.08395546273353]; //Point in Burscheid
+var pointNoIdea = [10.689161607437237, 51.30893277278768] //just clicked on the map of Germany
 
 module.exports = {
     main: function (location) {
-        return searchRegion(location, data);
+        return searchRegion(location);
     }
 }

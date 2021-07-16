@@ -1,13 +1,13 @@
 const fs = require('fs');
 
-let rawdata = fs.readFileSync('Data/testcenterDuesseldorf.json');
-let data = JSON.parse(rawdata);
-
 function getData() {
+    let rawdata = fs.readFileSync('./Data/testcenterDuesseldorf.json');
+    let data = JSON.parse(rawdata);
+
     var resultf = '{ \"testzentren\": {\"testzentrum\" : [';
     for (var i = 0; i < data.result.total; i++) {
         var result = data.result.records[i];
-        var hs = ''+result['name_teststelle']
+        var hs = '' + result['name_teststelle']
         if (!(hs.includes('\r'))) {
             resultf = resultf + '{' +
                 '\"name\":\"' + result['name_teststelle'] + '\",' +

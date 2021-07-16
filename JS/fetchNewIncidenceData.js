@@ -30,14 +30,18 @@ callback = function (response) {
 
 module.exports = {
   fetchData: function () {
-    https.get(options, callback);
-  },
-
-  ageOfData: function () {
+    var seconds;
     fs.stat('Data/incidenceData.json', function (err, stats) {
-      let seconds = (new Date().getTime() - stats.mtime) / 1000;
+      seconds = (new Date().getTime() - stats.mtime) / 1000;
       console.log(`incidenceData is ${seconds} sec old`);
-      return parseFloat(seconds);
-    });
+      //if the Incidence data is older than 6 hours, it gets fetched new 
+      if (parseFloat(seconds) > 21600) {
+        console.log('fetching new Incidentce Data')
+        https.get(options, callback);
+      }
+    })
+  },
+  onStart: function () {
+    https.get(options, callback);
   }
 }

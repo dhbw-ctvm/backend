@@ -26,17 +26,22 @@ callback = function (response) {
     });
   });
 }
+https.get(options, callback);
 
 module.exports = {
   fetchData: function () {
-    https.get(options, callback);
-  },
-
-  ageOfData: function () {
+    var seconds;
     fs.stat('Data/testcenterDuesseldorf.json', function (err, stats) {
-      let seconds = (new Date().getTime() - stats.mtime) / 1000;
+      seconds = (new Date().getTime() - stats.mtime) / 1000;
       console.log(`TestcenterData is ${seconds} sec old`);
-      return parseFloat(seconds);
-    });
+      //if the Testcenter data is older than 6 hours, it gets fetched new 
+      if (parseFloat(seconds) > 21600) {
+        console.log('fetching new Testcenter Data')
+        https.get(options, callback);
+      }
+    })
+  },
+  onStart: function () {
+    https.get(options, callback);
   }
 }

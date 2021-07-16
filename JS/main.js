@@ -1,39 +1,88 @@
+var express = require('express');
+var app = express();
+var cors = require('cors');
+app.use(cors());
+
 var incidence = require('./fetchNewIncidenceData.js');
 var getRegion = require('./getRegion.js');
-var testCeDuessel = require('./testcenterD.js'); 
+var testCeDuessel = require('./testcenterD.js');
 var testCeFormater = require('./testcenterDataFormater.js');
 
-//if the Incidence data is older than 6 hours, it gets fetched new
-if (incidence.ageOfData() > 21600) {
-  console.log('fetching new Incidentce Data')
-  incidence.fetchData();
+var xmljs = require("xml-js");
+var fs = require('fs');
+
+//startsequenz
+incidence.onStart();
+testCeDuessel.onStart();
+
+function xmlHeader(xslHref, rootTag, dtdUrl) {
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
+        '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
 }
 
-//Debug locations. The Coordinats for Locations have to be in the formate: [Longitude, Latitude]!
-var pointKi = [10.131973, 54.323640]; //Point in Kiel
-var pointKa = [8.407017, 49.014498]; //Point in Karlsruhe  ../8P407017S49P014498
-var pointGl = [7.1105689944801505, 51.08395546273353]; //Point in Burscheid
-var pointNoIdea = [10.689161607437237, 51.30893277278768] //just clicked on the map of Germany
+app.get('/xml/*.*', function (req, res) {
+    let fp = '..' + req.originalUrl;
 
-//getRegion.main(pointNoIdea);
+    fs.readFile(fp, 'utf8', function (err, data) {
+        if (err) {
+            res.sendStatus(404);
+            return;
+        }
 
-module.exports = {
-  startStack: function (location) {
-    //if the Incidence data is older than 6 hours, it gets fetched new 
-    if (incidence.ageOfData() > 21600) {
-      console.log('fetching new Incidentce Data')
-      incidence.fetchData();
+        if (fp.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
+        if (fp.endsWith('.xsl')) res.setHeader('Content-Type', 'text/xsl');
+        res.send(data);
+    });
+});
+
+app.get('/incidence', function (req, res) {
+    // Daten zu gegebenen Koordinaten abfragen
+
+    incidence.fetchData();
+    var point = [
+        parseFloat(req.query.long),
+        parseFloat(req.query.lat)
+    ]
+    var data = getRegion.main(point);
+
+    // Nicht benötigte Daten rausfiltern
+    data = {
+        xml: {
+            kreis: data['BEZ'] + ' ' + data['GEN'],     // Stadtkreis Karlsruhe
+            bundesland: data['BL'],                     // Baden-Württemberg
+            inzidenz: data['cases7_per_100k'],          // 1.60225597...
+            last_update: data['last_update']
+        }
     }
 
-    var point = location
-    return getRegion.main(point);
-  },
+    // JSON zu XML konvertieren
+    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
+    // XML-Header einfügen
+    data = xmlHeader('/xml/inzidenz.xsl', 'xml', '/xml/inzidenz.dtd') + data;
 
-  startTestCenterStack: function () {
-    if (testCeDuessel.ageOfData() > 21600) {
-      console.log('fetching new Testcenter Data')
-      testCeDuessel.fetchData();
-    }
-    return testCeFormater.testcenterData();
-  }
-}
+    res.setHeader('Content-Type', 'application/xml')
+    res.end(data)
+});
+
+app.get('/centers/test', function (req, res) {
+    // TODO: Array aller Testzentren zurückgeben
+    testCeDuessel.fetchData();
+
+    var data = JSON.parse(testCeFormater.testcenterData());
+
+    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
+    data = xmlHeader('/xml/testzentren.xsl', 'xml', 'xml/testzentren.dtd') + data
+    let rawdata = fs.readFileSync('../xml/testzentren.xml');
+    res.end(data);
+});
+
+app.get('/centers/vaccination', function (req, res) {
+    // TODO: Array aller Impfzentren zurückgeben
+});
+
+var server = app.listen(8081, function () {
+    var host = server.address().address
+    var port = server.address().port
+    console.log("Listening at http://%s:%s", host, port)
+});
