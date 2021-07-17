@@ -17,7 +17,7 @@ callback = function (response) {
   //the whole response has been received, so we just print it out here
   response.on('end', function () {
     //write output
-    fs.writeFile('Data/testcenterDuesseldorf.json', str, err => {
+    fs.writeFile('Data/Testcenter/Duesseldorf.json', str, err => {
       if (err) {
         console.error(err)
         return
@@ -26,12 +26,12 @@ callback = function (response) {
     });
   });
 }
-https.get(options, callback);
+//https.get(options, callback);
 
 module.exports = {
   fetchData: function () {
     var seconds;
-    fs.stat('Data/testcenterDuesseldorf.json', function (err, stats) {
+    fs.stat('Data/Testcenter/Duesseldorf.json', function (err, stats) {
       seconds = (new Date().getTime() - stats.mtime) / 1000;
       console.log(`TestcenterData is ${seconds} sec old`);
       //if the Testcenter data is older than 6 hours, it gets fetched new 

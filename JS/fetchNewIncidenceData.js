@@ -18,7 +18,7 @@ callback = function (response) {
   response.on('end', function () {
 
     //write output
-    fs.writeFile('Data/incidenceData.json', str, err => {
+    fs.writeFile('Data/Incidence/Data.json', str, err => {
       if (err) {
         console.error(err)
         return
@@ -27,12 +27,12 @@ callback = function (response) {
     });
   });
 }
-https.get(options, callback);
+//https.get(options, callback);
 
 module.exports = {
   fetchData: function () {
     var seconds;
-    fs.stat('Data/incidenceData.json', function (err, stats) {
+    fs.stat('Data/Incidence/Data.json', function (err, stats) {
       seconds = (new Date().getTime() - stats.mtime) / 1000;
       console.log(`incidenceData is ${seconds} sec old`);
       //if the Incidence data is older than 6 hours, it gets fetched new 

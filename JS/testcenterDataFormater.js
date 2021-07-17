@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function getData() {
-    let rawdata = fs.readFileSync('Data/testcenterDuesseldorf.json');
+    let rawdata = fs.readFileSync('Data/Testcenter/Duesseldorf.json');
     let data = JSON.parse(rawdata);
 
     var resultf = '{ \"testzentren\": {\"testzentrum\" : [';

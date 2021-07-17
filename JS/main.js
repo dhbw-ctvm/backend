@@ -10,6 +10,9 @@ var getRegion = require('./getRegion.js');
 var testCeDuessel = require('./testcenterD.js');
 var testCeFormater = require('./testcenterDataFormater.js');
 
+incidence.onStart();
+testCeDuessel.onStart();
+
 function xmlHeader(xslHref, rootTag, dtdUrl) {
     return '<?xml version="1.0" encoding="UTF-8"?>\n' +
         '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
