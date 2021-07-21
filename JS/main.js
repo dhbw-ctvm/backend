@@ -34,6 +34,7 @@ app.get('/xml/*.*', function (req, res) {
     });
 });
 
+//Incidence http method, to get the data for your location
 app.get('/incidence', function (req, res) {
     // Daten zu gegebenen Koordinaten abfragen
 
@@ -57,20 +58,20 @@ app.get('/incidence', function (req, res) {
     // JSON zu XML konvertieren
     data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
     // XML-Header einfügen
-    data = xmlHeader('/xml/inzidenz.xsl', 'xml', '/xml/inzidenz.dtd') + data;
+    data = xmlHeader('http://localhost:8081/xml/inzidenz.xsl', 'xml', 'http://localhost:8081/xml/inzidenz.dtd') + data;
 
     res.setHeader('Content-Type', 'application/xml')
     res.end(data)
 });
 
+//http get for testcenter locations
 app.get('/centers/test', function (req, res) {
-    // TODO: Array aller Testzentren zurückgeben
     testCeDuessel.fetchData();
 
     var data = JSON.parse(testCeFormater.testcenterData());
 
     data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
-    data = xmlHeader('/xml/testzentren.xsl', 'xml', 'xml/testzentren.dtd') + data
+    data = xmlHeader('http://localhost:8081/xml/testzentren.xsl', 'xml', 'http://localhost:8081/xml/testzentren.dtd') + data
     let rawdata = fs.readFileSync('../xml/testzentren.xml');
     res.end(data);
 });
