@@ -3,18 +3,419 @@
 <!DOCTYPE impfzentren SYSTEM "http://localhost:8081/xml/impfzentren.dtd">
 <impfzentren>
     <impfzentrum>
-        <name>Braun'sches Impfzetrum zu Karlsruhe</name>
-        <addresse></addresse>
+        <name>Kreisimpfzentrum: Stadt Baden-Baden</name>
+        <addresse>Werderstraße 4, 76530 Baden-Baden</addresse>
         <koordinaten>
-            <laenge></laenge>
-            <breite></breite>
+            <laenge>8.235627559168286</laenge>
+            <breite>48.759600846202474</breite>
         </koordinaten>
         <oeffnungszeiten>
-            <zeit tag="montag">08:00-18:00</zeit>
-            <zeit tag="dienstag">08:00-18:00</zeit>
-            <zeit tag="montag">09:00-18:00</zeit>
-            <!-- usw. -->
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
         </oeffnungszeiten>
-        <terminbuchung>Hier könnte Ihr Link stehen</terminbuchung>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Bühl, Schwarzwaldhalle</name>
+        <addresse>Ludwig-Jahn-Str. 6a, 77815 Bühl</addresse>
+        <koordinaten>
+            <laenge>8.128305098263032</laenge>
+            <breite>48.688283881480224</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Mosbach,Obertorzentrum</name>
+        <addresse>Hauptstraße 96, 74821 Mosbach</addresse>
+        <koordinaten>
+            <laenge>9.148002588621829</laenge>
+            <breite>49.35401851812538</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Sinsheim, „Parsa“-Halle</name>
+        <addresse>Breite Seite 3, 74889 Sinsheim </addresse>
+        <koordinaten>
+            <laenge>8.863738540607308</laenge>
+            <breite>49.25231162774521</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Weinheim, 3-GlockenCenter</name>
+        <addresse>Bergstraße 49-57, 69469 Weinheim</addresse>
+        <koordinaten>
+            <laenge>8.668177955958214</laenge>
+            <breite>49.55402666168475</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Altensteig, DEKRAHotel Wart</name>
+        <addresse>Wildbader Straße 28, 72213 Altensteig-Wart</addresse>
+        <koordinaten>
+            <laenge>8.643798113603793</laenge>
+            <breite>48.62268435807237</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Mönsheim, AppenbergHalle</name>
+        <addresse>Pforzheimer Straße 85, 71297 Mönsheim</addresse>
+        <koordinaten>
+            <laenge>8.855294613610509</laenge>
+            <breite>48.865448276530024</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Sulzfeld, EGO Halle 4</name>
+        <addresse>Ochsenburger Straße 19, 75056 Sulzfeld</addresse>
+        <koordinaten>
+            <laenge>8.861981384781267</laenge>
+            <breite>49.0974545287269</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Bruchsal, PraktikerBaumarkt </name>
+        <addresse>Stuttgarter Str. 10, 76646 Bruchsal</addresse>
+        <koordinaten>
+            <laenge>8.640917652246472</laenge>
+            <breite>49.095690662403136</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Dornstetten, Riedsteighalle</name>
+        <addresse>Riedsteige 80, 72280 Dornstetten</addresse>
+        <koordinaten>
+            <laenge>8.510153469421438</laenge>
+            <breite>48.4702399990226</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Pforzheim, Eissporthalle</name>
+        <addresse>St.-Maur-Halle, Hohwiesenweg 4, 75175 Pforzheim</addresse>
+        <koordinaten>
+            <laenge>8.723511913611317</laenge>
+            <breite>48.89647231293073</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Heidelberg, Gesellschaftshaus Pfaffengrund</name>
+        <addresse>Schwalbenweg 1/2, 69123 Heidelberg</addresse>
+        <koordinaten>
+            <laenge>8.653268540611355</laenge>
+            <breite>49.398782819290815</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Kreisimpfzentrum: Karlsruhe, Kongresszentrum Schwarzwaldhalle</name>
+        <addresse>Festplatz 5, 76137 Karlsruhe</addresse>
+        <koordinaten>
+            <laenge>8.401064813614227</laenge>
+            <breite>49.00189219504556</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Messe Freiburg</name>
+        <addresse>Neuer Messplatz 1, 79108 Freiburg im Breisgau</addresse>
+        <koordinaten>
+            <laenge>7.8416452913701775</laenge>
+            <breite>48.014177462401626</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Messe Offenburg-Ortenau</name>
+        <addresse>Messe Offenburg-Ortenau Messehalle 1 Schutterwälderstraße 3, 77656 Offenburg</addresse>
+        <koordinaten>
+            <laenge>7.932595269421236</laenge>
+            <breite>48.463822549397605</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Ulm Messe </name>
+        <addresse>Halle 7 der Ulm-Messe GmbH, Böfingerstr. 50, 89073 Ulm</addresse>
+        <koordinaten>
+            <laenge>10.0112271699662</laenge>
+            <breite>48.41265497163561</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Karlsruhe Messe</name>
+        <addresse>Halle 2, Messeallee 1, 76287 Rheinstetten</addresse>
+        <koordinaten>
+            <laenge>8.33030725594237</laenge>
+            <breite>48.98068301851352</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Stuttgart, Liederhalle</name>
+        <addresse>Berliner Platz 1-3, 70174 Stuttgart</addresse>
+        <koordinaten>
+            <laenge>9.170400447414375</laenge>
+            <breite>48.779544345064174</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Stuttgart, Robert-BoschKrankenhaus</name>
+        <addresse>Auerbachstraße 110, 70376 Stuttgart</addresse>
+        <koordinaten>
+            <laenge>9.187402628889682</laenge>
+            <breite>48.814508478411256</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Heidelberg</name>
+        <addresse>South Gettysburg Avenue 45, 69124 Heidelberg</addresse>
+        <koordinaten>
+            <laenge>8.62817988293927</laenge>
+            <breite>49.370967241058075</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Tübingen</name>
+        <addresse>Paul-Horn-Arena, Europastraße 50, 72072 Tübingen</addresse>
+        <koordinaten>
+            <laenge>9.042488336341465</laenge>
+            <breite>48.510881691632086</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Rot am See</name>
+        <addresse>Steinäckerstraße 16, 74585 Rot am See</addresse>
+        <koordinaten>
+            <laenge>10.015241569442983</laenge>
+            <breite>49.25512261608412</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
+    </impfzentrum>
+    <impfzentrum>
+        <name>Zentrales Impfzentrum BW: Mannheim</name>
+        <addresse>Xaver-Fuhr-Straße 101, 68163 Mannheim </addresse>
+        <koordinaten>
+            <laenge>8.522982742462847</laenge>
+            <breite>49.46928393448632</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">09:00-15:00</zeit>
+            <zeit tag="dienstag">09:00-15:00</zeit>
+            <zeit tag="mittwoch">09:00-15:00</zeit>
+            <zeit tag="donnerstag">09:00-15:00</zeit>
+            <zeit tag="freitag">09:00-15:00</zeit>
+            <zeit tag="samstag">09:00-15:00</zeit>
+            <zeit tag="sonntag">09:00-15:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
     </impfzentrum>
 </impfzentren>
