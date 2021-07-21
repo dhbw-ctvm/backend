@@ -7,7 +7,7 @@ var fs = require('fs');
 
 var incidence = require('./fetchNewIncidenceData.js');
 var getRegion = require('./getRegion.js');
-var testCeDuessel = require('./testcenterD.js');
+var testCeDuessel = require('./fetchNewTestcenterDataDue.js');
 var testCeFormater = require('./testcenterDataFormater.js');
 
 incidence.onStart();
