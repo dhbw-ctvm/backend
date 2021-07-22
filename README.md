@@ -5,7 +5,7 @@
 ```
 npm install express --save
 npm install xml-js --save
-npm instlal cors --save
+npm install cors --save
 ```
 
 ## Server starten
