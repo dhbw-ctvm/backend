@@ -418,4 +418,43 @@
         </oeffnungszeiten>
         <terminbuchung>https://002-iz.impfterminservice.de/impftermine</terminbuchung>
     </impfzentrum>
+
+
+    <impfzentrum>
+        <name>Bertha-von-Suttner-Platz Duesseldorf</name>
+        <addresse>Atrium am Bertha-von-Suttner-Platz, Duesseldorf </addresse>
+        <koordinaten>
+            <laenge>6.795818467388668</laenge>
+            <breite>51.2188708531709</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">10:00-19:00</zeit>
+            <zeit tag="dienstag">10:00-19:00</zeit>
+            <zeit tag="mittwoch">10:00-19:00</zeit>
+            <zeit tag="donnerstag">10:00-19:00</zeit>
+            <zeit tag="freitag">10:00-19:00</zeit>
+            <zeit tag="samstag">10:00-19:00</zeit>
+            <zeit tag="sonntag">10:00-19:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>nicht noetig</terminbuchung>
+    </impfzentrum>
+
+    <impfzentrum>
+        <name>Pop-up-Impfstellen im U-Bahnhof Heinrich-Heine-Allee Duesseldorf </name>
+        <addresse>Heinrich-Heine-Allee,40213 Duesseldorf</addresse>
+        <koordinaten>
+            <laenge>6.777018298334176</laenge>
+            <breite>51.22546982672905</breite>
+        </koordinaten>
+        <oeffnungszeiten>
+            <zeit tag="montag">10:00-19:00</zeit>
+            <zeit tag="dienstag">10:00-19:00</zeit>
+            <zeit tag="mittwoch">10:00-19:00</zeit>
+            <zeit tag="donnerstag">10:00-19:00</zeit>
+            <zeit tag="freitag">10:00-19:00</zeit>
+            <zeit tag="samstag">10:00-19:00</zeit>
+            <zeit tag="sonntag">10:00-19:00</zeit>
+        </oeffnungszeiten>
+        <terminbuchung>nicht noetig</terminbuchung>
+    </impfzentrum>
 </impfzentren>
