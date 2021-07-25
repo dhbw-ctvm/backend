@@ -1,6 +1,7 @@
 const https = require('https');
 const fs = require('fs');
 
+//https link for the Testchenter Data for Duesseldorf
 var options = {
   host: 'opendata.duesseldorf.de',
   path: '/api/action/datastore/search.json?resource_id=d0ad2b6f-8fc1-4447-9e21-cb8b8e00ab65&limit=300'
@@ -26,11 +27,12 @@ callbackTestDue = function (response) {
     });
   });
 }
-https.get(options, callbackTestDue);
+//https.get(options, callbackTestDue);
 
 module.exports = {
   fetchData: function () {
     var seconds;
+    //checking how oldthe data is
     fs.stat('Data/Testcenter/Duesseldorf.json', function (err, stats) {
       seconds = (new Date().getTime() - stats.mtime) / 1000;
       console.log(`TestcenterData is ${seconds} sec old`);

@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+//reading the data and formating it so it can be converted to xml, than returning it
 function getData() {
     let rawdata = fs.readFileSync('Data/Testcenter/Duesseldorf.json');
     let data = JSON.parse(rawdata);

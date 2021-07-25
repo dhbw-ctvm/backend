@@ -45,23 +45,30 @@ app.get('/incidence', function (req, res) {
     ]
     var data = getRegion.main(point);
 
-    // Nicht benötigte Daten rausfiltern
-    data = {
-        xml: {
-            kreis: data['BEZ'] + ' ' + data['GEN'],     // Stadtkreis Karlsruhe
-            bundesland: data['BL'],                     // Baden-Württemberg
-            inzidenz: data['cases7_per_100k'],          // 1.60225597...
-            last_update: data['last_update']
-        }
+    if (data == undefined) {
+
+        let rawdata = fs.readFileSync('../xml/inzidenz.xml');
+        res.end(rawdata)
     }
+    else {
+        // Nicht benötigte Daten rausfiltern
+        data = {
+            xml: {
+                kreis: data['BEZ'] + ' ' + data['GEN'],     // Stadtkreis Karlsruhe
+                bundesland: data['BL'],                     // Baden-Württemberg
+                inzidenz: data['cases7_per_100k'],          // 1.60225597...
+                last_update: data['last_update']
+            }
+        }
 
-    // JSON zu XML konvertieren
-    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
-    // XML-Header einfügen
-    data = xmlHeader('http://localhost:8081/xml/inzidenz.xsl', 'xml', 'http://localhost:8081/xml/inzidenz.dtd') + data;
+        // JSON zu XML konvertieren
+        data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
+        // XML-Header einfügen
+        data = xmlHeader('http://localhost:8081/xml/inzidenz.xsl', 'xml', 'http://localhost:8081/xml/inzidenz.dtd') + data;
 
-    res.setHeader('Content-Type', 'application/xml')
-    res.end(data)
+        res.setHeader('Content-Type', 'application/xml')
+        res.end(data)
+    }
 });
 
 //http get for testcenter locations
@@ -76,6 +83,7 @@ app.get('/centers/test', function (req, res) {
     res.end(data);
 });
 
+//vaccination centers are hard coded, because there is no api to get the current locations to get your self vaccinated
 app.get('/centers/vaccination', function (req, res) {
     // TODO: Array aller Impfzentren zurückgeben
 });
