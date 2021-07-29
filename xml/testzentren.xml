@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://localhost:8081/xml/testzentren.xsl"?>
-<!DOCTYPE testzentren SYSTEM "http://localhost:8081/xml/testzentren.dtd">
+<?xml-stylesheet type="text/xsl" href="http://ctvm.nkilders.de:8081/xml/testzentren.xsl"?>
+<!DOCTYPE testzentren SYSTEM "http://ctvm.nkilders.de:8081/xml/testzentren.dtd">
 <testzentren>
     <testzentrum>
         <name>Noahs Testzentrum</name>

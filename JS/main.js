@@ -15,8 +15,8 @@ testCeDuessel.onStart();
 
 function xmlHeader(xslHref, rootTag, dtdUrl) {
     return '<?xml version="1.0" encoding="UTF-8"?>\n' +
-        '<?xml-stylesheet type="text/xsl" href="' + xslHref + '"?>\n' +
-        '<!DOCTYPE ' + rootTag + ' SYSTEM "' + dtdUrl + '">\n';
+        '<?xml-stylesheet type="text/xsl" href="http://ctvm.nkilders.de:8081' + xslHref + '"?>\n' +
+        '<!DOCTYPE ' + rootTag + ' SYSTEM "http://ctvm.nkilders.de:8081' + dtdUrl + '">\n';
 }
 
 app.get('/xml/*.*', function (req, res) {
@@ -64,7 +64,7 @@ app.get('/incidence', function (req, res) {
         // JSON zu XML konvertieren
         data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
         // XML-Header einfügen
-        data = xmlHeader('http://localhost:8081/xml/inzidenz.xsl', 'xml', 'http://localhost:8081/xml/inzidenz.dtd') + data;
+        data = xmlHeader('/xml/inzidenz.xsl', 'xml', '/xml/inzidenz.dtd') + data;
 
         res.setHeader('Content-Type', 'application/xml')
         res.end(data)
@@ -78,7 +78,7 @@ app.get('/centers/test', function (req, res) {
     var data = JSON.parse(testCeFormater.testcenterData());
 
     data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
-    data = xmlHeader('http://localhost:8081/xml/testzentren.xsl', 'xml', 'http://localhost:8081/xml/testzentren.dtd') + data
+    data = xmlHeader('/xml/testzentren.xsl', 'xml', '/xml/testzentren.dtd') + data
     let rawdata = fs.readFileSync('../xml/testzentren.xml');
     res.end(data);
 });
