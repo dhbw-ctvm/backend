@@ -19,38 +19,43 @@ function xmlHeader(xslHref, rootTag, dtdUrl) {
         '<!DOCTYPE ' + rootTag + ' SYSTEM "http://ctvm.nkilders.de:8081' + dtdUrl + '">\n';
 }
 
-app.get('/xml/*.*', function (req, res) {
-    let fp = '..' + req.originalUrl;
+app.get('/xml/*.*', (req, res) => {
+    let url = '..' + req.originalUrl;
 
-    fs.readFile(fp, 'utf8', function (err, data) {
+    fs.readFile(url, 'utf8', (err, data) => {
+        // 404 falls Datei nicht gefunden
         if (err) {
             res.sendStatus(404);
             return;
         }
 
-        if (fp.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
-        if (fp.endsWith('.xsl')) res.setHeader('Content-Type', 'text/xsl');
+        // Content-Type-Header hinzufügen
+        if (url.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
+        if (url.endsWith('.xsl')) res.setHeader('Content-Type', 'text/xsl');
+
         res.send(data);
     });
 });
 
-//Incidence http method, to get the data for your location
-app.get('/incidence', function (req, res) {
-    // Daten zu gegebenen Koordinaten abfragen
-
+// Incidence http method, to get the data for your location
+app.get('/incidence', (req, res) => {
     incidence.fetchData();
+
     var point = [
         parseFloat(req.query.long),
         parseFloat(req.query.lat)
-    ]
+    ];
+
+    // Daten zu gegebenen Koordinaten abfragen
     var data = getRegion.main(point);
 
-    if (data == undefined) {
+    res.setHeader('Content-Type', 'application/xml');
 
+    if (data == undefined) {
+        // Dummy-Datei zurückgeben, falls keine Daten zu den gegebenen Koordinaten gefunden wurden
         let rawdata = fs.readFileSync('../xml/inzidenz.xml');
-        res.end(rawdata)
-    }
-    else {
+        res.end(rawdata);
+    } else {
         // Nicht benötigte Daten rausfiltern
         data = {
             xml: {
@@ -66,29 +71,95 @@ app.get('/incidence', function (req, res) {
         // XML-Header einfügen
         data = xmlHeader('/xml/inzidenz.xsl', 'xml', '/xml/inzidenz.dtd') + data;
 
-        res.setHeader('Content-Type', 'application/xml')
-        res.end(data)
+        res.end(data);
     }
 });
 
-//http get for testcenter locations
-app.get('/centers/test', function (req, res) {
+// HTTP get for testcenter locations
+app.get('/centers/test', (req, res) => {
     testCeDuessel.fetchData();
 
     var data = JSON.parse(testCeFormater.testcenterData());
 
-    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 })
-    data = xmlHeader('/xml/testzentren.xsl', 'xml', '/xml/testzentren.dtd') + data
-    let rawdata = fs.readFileSync('../xml/testzentren.xml');
+    // JSON zu XML konvertieren
+    data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 });
+    // XML-Header einfügen
+    data = xmlHeader('/xml/testzentren.xsl', 'xml', '/xml/testzentren.dtd') + data;
+
+    // let rawdata = fs.readFileSync('../xml/testzentren.xml');
+
+    res.setHeader('Content-Type', 'application/xml');
     res.end(data);
 });
 
-//vaccination centers are hard coded, because there is no api to get the current locations to get your self vaccinated
-app.get('/centers/vaccination', function (req, res) {
-    // TODO: Array aller Impfzentren zurückgeben
+// Daten zu Testzentrum bei gegebenen Koordinaten
+app.get('/center/test', (req, res) => {
+    let coords = [
+        parseFloat(req.query.long),
+        parseFloat(req.query.lat)
+    ];
+
+    let data = JSON.parse(testCeFormater.testcenterData());
+
+    for(let tz of data.testzentren.testzentrum) {
+        let c = tz.koordinaten;
+
+        if(c.laenge == coords[0] && c.breite == coords[1]) {
+            let data = JSON.stringify({testzentrum: tz});
+            data = xmljs.json2xml(data, { compact: true, spaces: 4 });
+            data = xmlHeader('/xml/testzentrum.xsl', 'testzentrum', '/xml/testzentrum.dtd') + data;
+
+            res.setHeader('Content-Type', 'application/xml');
+            res.end(data);
+
+            return;
+        }
+    }
+
+    res.sendStatus(500);
+    res.end();
 });
 
-var server = app.listen(8081, function () {
+// Daten zu Impfzentrum bei gegebenen Koordinaten
+app.get('/center/vaccination', (req, res) => {
+    let coords = [
+        parseFloat(req.query.long),
+        parseFloat(req.query.lat)
+    ];
+
+    let data = fs.readFileSync('../xml/impfzentren.xml');
+    data = JSON.parse(xmljs.xml2json(data));
+
+    // Empfehlenswert, um die folgenden Zeilen zu verstehen: https://pastebin.com/VUQWdDHM
+
+    for(let iz of data.elements[2].elements) {
+        let c = iz.elements[2].elements;
+
+        if(c[0].elements[0].text == coords[0] && c[1].elements[0].text == coords[1]) {
+            data = {
+                impfzentrum: {
+                    name: iz.elements[0].elements[0].text,
+                    addresse: iz.elements[1].elements[0].text,
+                    oefnnungszeiten: null,
+                    terminbuchung: iz.elements[4].elements[0].text
+                }
+            };
+
+            data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 });
+            data = xmlHeader('/xml/impfzentrum.xsl', 'impfzentrum', '/xml/impfzentrum.dtd') + data;
+
+            res.setHeader('Content-Type', 'application/xml');
+            res.end(data);
+
+            return;
+        }
+    }
+
+    res.sendStatus(500);
+    res.end();
+});
+
+var server = app.listen(8081, () => {
     var host = server.address().address
     var port = server.address().port
     console.log("Listening at http://%s:%s", host, port)
