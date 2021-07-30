@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://ctvm.nkilders.de:8081/xml/impfzentren.xsl"?>
 <!DOCTYPE impfzentren SYSTEM "http://ctvm.nkilders.de:8081/xml/impfzentren.dtd">
 <impfzentren>
     <impfzentrum>

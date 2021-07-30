@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="http://ctvm.nkilders.de:8081/xml/inzidenz.xsl"?>
 <!DOCTYPE xml SYSTEM "http://ctvm.nkilders.de:8081/xml/inzidenz.dtd">
 <xml>
-  <kreis>Landkreis Karlsruhe</kreis>
-  <bundesland>Baden-Württemberg</bundesland>
-  <inzidenz>11.9</inzidenz>
+    <kreis>Landkreis Karlsruhe</kreis>
+    <bundesland>Baden-Württemberg</bundesland>
+    <inzidenz>11.9</inzidenz>
 </xml>
