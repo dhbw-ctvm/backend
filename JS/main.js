@@ -4,6 +4,7 @@ var cors = require('cors');
 app.use(cors());
 var xmljs = require("xml-js");
 var fs = require('fs');
+var xmldom = require('xmldom');
 
 var incidence = require('./fetchNewIncidenceData.js');
 var getRegion = require('./getRegion.js');
@@ -122,35 +123,23 @@ app.get('/center/test', (req, res) => {
 
 // Daten zu Impfzentrum bei gegebenen Koordinaten
 app.get('/center/vaccination', (req, res) => {
-    let coords = [
-        parseFloat(req.query.long),
-        parseFloat(req.query.lat)
+    let clickPos = [
+        req.query.long,
+        req.query.lat
     ];
 
     let data = fs.readFileSync('../xml/impfzentren.xml');
-    data = JSON.parse(xmljs.xml2json(data));
+    data = new xmldom.DOMParser().parseFromString(data.toString(), 'text/xml');
 
-    // Empfehlenswert, um die folgenden Zeilen zu verstehen: https://pastebin.com/VUQWdDHM
+    data = data.getElementsByTagName('impfzentrum');
+    for(let i = 0; i < data.length; i++) {
+        let coords = data[i].getElementsByTagName('koordinaten')[0];
+        let lon = coords.getElementsByTagName('laenge')[0].textContent;
+        let lat = coords.getElementsByTagName('breite')[0].textContent;
 
-    for(let iz of data.elements[2].elements) {
-        let c = iz.elements[2].elements;
-
-        if(c[0].elements[0].text == coords[0] && c[1].elements[0].text == coords[1]) {
-            data = {
-                impfzentrum: {
-                    name: iz.elements[0].elements[0].text,
-                    addresse: iz.elements[1].elements[0].text,
-                    oefnnungszeiten: null,
-                    terminbuchung: iz.elements[4].elements[0].text
-                }
-            };
-
-            data = xmljs.json2xml(JSON.stringify(data), { compact: true, spaces: 4 });
-            data = xmlHeader('/xml/impfzentrum.xsl', 'impfzentrum', '/xml/impfzentrum.dtd') + data;
-
+        if(lon == clickPos[0] && lat == clickPos[1]) {
             res.setHeader('Content-Type', 'application/xml');
-            res.end(data);
-
+            res.end(data[i].toString());
             return;
         }
     }
